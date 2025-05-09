@@ -4,9 +4,12 @@ namespace App\Livewire;
 
 use App\Models\Course;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class MataPelajaranTable extends Component
 {
+    use WithPagination;
+
     public $course_name, $course_id;
     public $isEdit = false; // Menandakan apakah kita dalam mode edit atau tidak
     public $showModal = false; // Untuk menampilkan atau menyembunyikan modal
@@ -82,6 +85,7 @@ class MataPelajaranTable extends Component
     // Reset form input
     public function resetForm()
     {
+        $this->resetPage();
         $this->course_name = '';
         $this->course_id = null;
         $this->isEdit = false;

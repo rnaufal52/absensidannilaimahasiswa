@@ -5,9 +5,12 @@ namespace App\Livewire;
 use App\Models\Course;
 use App\Models\Session;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class PertemuanTable extends Component
 {
+    use WithPagination;
+
     public $session_topic, $session_date, $session_id, $course_id;
     public $isEdit = false; // Menandakan apakah kita dalam mode edit atau tidak
     public $showModal = false; // Untuk menampilkan atau menyembunyikan modal
@@ -118,6 +121,7 @@ class PertemuanTable extends Component
     // Reset form input
     public function resetForm()
     {
+        $this->resetPage();
         $this->session_topic = '';
         $this->session_date = '';
         $this->course_id='';
